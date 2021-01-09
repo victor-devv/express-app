@@ -4,7 +4,8 @@
   "description": "NodeJs with Express",
   "main": "app.js",
   "scripts": {
-    "test": "npm start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Victor Ikuomola",
   "license": "ISC",

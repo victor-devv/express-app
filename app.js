@@ -1,6 +1,20 @@
 const http = require('http');
 
-let a = 2;
-let b = 3;
+const express = require("express");
 
-console.log(a*b);
+const app = express();
+
+app.use((req, res, next) => {
+  console.log("In the middleware!");
+  next(); //This allows the request to continue to the next middleware in line
+});
+
+app.use((req, res, next) => {
+  console.log("In another middleware!");
+  res.send("<h1>Hello From Express!</h1>");
+});
+
+// const server = http.createServer(app);
+
+// server.listen(3000);
+app.listen(3000);
