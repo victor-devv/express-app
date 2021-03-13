@@ -20,9 +20,6 @@ router.get("/", (req, res, next) => {
     pageTitle: "Express Store",
     prods: products,
     path: "/",
-    hasProducts: products.length > 0,
-    productCSS: true,
-    activeShop: true,
   });
 });
 

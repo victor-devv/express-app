@@ -2,18 +2,13 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
-// const expressHbs = require("express-handlebars");
 
 const app = express();
 
 // Template engine
 
-// app.engine('.hbs', expressHbs({extname: '.hbs', defaultLayout: 'main-layout'}))
-
 //app.set allows you set any configuration values. Read with app.get
 
-// app.set('view engine', 'pug') 
-// app.set('view engine', '.hbs') 
 app.set('view engine', 'ejs') 
 
 //set folder where views are. Though views folder is default but just to show how its done
