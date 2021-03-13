@@ -2,8 +2,22 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+// const expressHbs = require("express-handlebars");
 
 const app = express();
+
+// Template engine
+
+// app.engine('.hbs', expressHbs({extname: '.hbs', defaultLayout: 'main-layout'}))
+
+//app.set allows you set any configuration values. Read with app.get
+
+// app.set('view engine', 'pug') 
+// app.set('view engine', '.hbs') 
+app.set('view engine', 'ejs') 
+
+//set folder where views are. Though views folder is default but just to show how its done
+app.set('views', 'views')
 
 const rootDir = require("./helpers/path");
 
@@ -19,7 +33,13 @@ app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(rootDir, "views", "errors", "404.html"));
+  // res.status(404).sendFile(path.join(rootDir, "views", "errors", "404.html"));
+
+  // PUG
+  res.render("errors/404", {
+    pageTitle: "404 Page Not Found",
+    path: "",
+  });
 });
 
 app.listen(3000);

@@ -10,7 +10,16 @@ const products = [];
 
 //Note that if you're sending a response in a middleware, make sure not to add the next() function
 router.get("/add-product", (req, res, next) => {
-    res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  // res.sendFile(path.join(rootDir, "views", "add-product.html"));
+
+  // PUG
+  res.render("add-product", {
+    pageTitle: "Add Product",
+    path: "/admin/add-product",
+    formsCSS: true,
+    productCSS: true,
+    activeAddProduct: true,
+  });
 });
 
 router.post("/add-product", (req, res, next) => {
@@ -20,5 +29,5 @@ router.post("/add-product", (req, res, next) => {
 });
 
 // module.exports = router;
-exports.routes = router
-exports.products = products
+exports.routes = router;
+exports.products = products;
