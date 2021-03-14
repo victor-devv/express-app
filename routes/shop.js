@@ -2,25 +2,18 @@ const path = require("path");
 
 const express = require("express");
 
-const rootDir = require("../helpers/path");
+const shopController = require("../controllers/shop");
 
 const router = express.Router();
 
-const adminData = require("./admin");
+router.get("/", shopController.getIndex);
 
-router.get("/", (req, res, next) => {
-  // console.log("shop.js", adminData.products);
+router.get("/products", shopController.getProducts);
 
-  // HTML
-  // res.sendFile(path.join(rootDir, "views", "shop.html")); //same as '/views/shop.html' but with functionality to work on all systems, and dirname to path of the projects
+router.get("/cart", shopController.getCart);
 
-  const products = adminData.products;
-  // PUG
-  res.render("shop", {
-    pageTitle: "Express Store",
-    prods: products,
-    path: "/",
-  });
-});
+router.get("/orders", shopController.getOrders);
+
+router.get("/checkout", shopController.getCheckout);
 
 module.exports = router;
